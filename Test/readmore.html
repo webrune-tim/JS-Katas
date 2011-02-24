@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<script type="text/javascript" src="jquery.min.js"></script>
+		<title>Read More</title> 
+		
+		<script> 
+			$(document).ready(function() {
+				$('.message').hide(); 
+				$('h2.readmore').click(function() {
+					$('.message').show('slow'); 
+					$(this).hide(); 
+				});
+			}); 
+			
+			$(document).ready(function() { 
+				$('.message').click(function() {
+					$('h2.readmore').show('fast'); 
+					$(this).hide('.message'); 
+				});
+			});
+		</script>
+	</head> 
+<body>
+
+<article> 
+	<h2 class="readmore">Great new thing!</h2>
+	<span class="message"> 
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+		Phasellus nibh dolor, ullamcorper non sagittis euismod,
+		congue fringilla orci. Ut dignissim nulla ut justo vestibulum
+		vestibulum. Mauris eu turpis ut eros semper faucibus vitae id
+		libero. Pellentesque malesuada facilisis enim sed lacinia.
+		Donec sed lacus sit amet mauris tempus tempor sit amet vel
+		neque. Mauris at massa dui, quis euismod erat. Ut blandit
+		tellus quis tortor commodo fermentum. In elementum, urna non
+		pharetra venenatis, ante lorem pellentesque sapien, eu
+		eleifend mi massa ut ligula. Nunc posuere ullamcorper enim,
+		consectetur varius risus tempor a. Class aptent taciti
+		sociosqu ad litora torquent per conubia nostra, per inceptos
+		himenaeos. Suspendisse sed eros ac magna ullamcorper cursus.
+		Cum sociis natoque penatibus et magnis dis parturient montes,
+		nascetur ridiculus mus. Ut congue elementum nisl nec rutrum.
+		Donec ultricies iaculis molestie. Duis et leo nunc.
+	</span>
+
+</article>
+
+</body>
+</html>

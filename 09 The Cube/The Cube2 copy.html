@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8 />
+	<title></title>
+	<link rel="stylesheet" type="text/css" media="screen" href="master.css" />
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<!--[if IE]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<script type="text/javascript">
+		function isAnyDigitGroupSumPrime(text){
+			var e = text.split(',');
+			for (var i=0; i < e.length; i++){
+				var num = 0;
+				for (pos = 0; pos < e[i].length; pos++) { 
+					num = num + parseInt(e[i].charAt(pos))
+				}
+				
+				console.info("Testing %i, the sum of digits %s.", num, e[i]);
+			    var prime = isPrime(num);
+			    
+				if(prime){
+					console.info("%i, the sum of digits %s, is prime!.", num, e[i]);
+					return true;
+				}
+			}
+			return false;
+		}
+		
+		function isPrime(num){
+			for (var divisor = 2; divisor < num; divisor++) {
+				if (num % divisor == 0) {
+					console.info("%i divides evenly into %i. It is not prime.", divisor, num);
+					return fals	e;
+				}
+				else
+					console.info("%i does not divide evenly into %i", divisor, num);
+			}
+			return true;
+		}
+		
+		
+		$(function(){
+		
+			$("#btn").click(function(){
+				if(isAnyDigitGroupSumPrime($('#number1').val())){
+					trap.play();
+					$('#result1').val("It's a Trap!");
+				}
+				else
+					$('#result1').val("It's safe!");
+		    }); // END - btn.click
+		    
+		}); // END - ready
+	</script>
+</head>
+<body>
+	<form>
+		<div class="box">
+			<h1>Add and Prime</h1>
+            <label>
+            	<span>Please enter first number</span>
+               	<input type="text" class="input_text" id="number1"/>
+			</label>
+			<label>
+               	<span>Tada</span>
+               	<input type="text" class="input_text" id="result1"/>
+            <label>
+				<input type="button" value="Calculate" id="btn"/>
+            </label>
+ 		</div>
+ 				<audio id="trap" src="itsatrap.mp3">
+					Your browser does not support the audio element.
+				</audio>		<!--
+		<div class="box">
+			<h1>Add and Prime</h1>
+            <label>
+            	<span>Please enter second number</span>
+               	<input type="text" class="input_text" id="number2"/>
+			</label>
+			<label>
+               	<span>Tata</span>
+               	<input type="text" class="input_text" id="result2"/>
+            <label>
+				<input type="button" value="Calculate" onclick="$('#result2').val(isPrime($('#number2').val()))">
+            </label>
+ 		</div>
+ 		
+		<div class="box">
+			<h1>Add and Prime</h1>
+            <label>
+            	<span>Please enter first number</span>
+               	<input type="text" class="input_text" id="number3"/>
+			</label>
+			<label>
+               	<span>Tata</span>
+               	<input type="text" class="input_text" id="result3"/>
+            <label>
+				<input type="button" value="Calculate" onclick="$('#result3').val(isPrime($('#number3').val()))">
+            </label>
+ 		</div>-->
+    </form>
+</body>
+</html>

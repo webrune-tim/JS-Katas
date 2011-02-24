@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8 />
+	<title></title>
+	<link rel="stylesheet" type="text/css" media="screen" href="master.css" />
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<!--[if IE]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<script type="text/javascript">
+		function reverse(text) {
+			newText = ""
+			console.trace(text.length);
+			for (i=text.length; i >= 0; i--){
+				newText = newText + text.charAt(i);
+			}
+			return newText;	
+		}
+	</script>
+	
+	<form>
+		<div class="box">
+			<h1>Enter a word or Phase</h1>
+            <label>
+            	<span>Please enter a word or Phase:</span>
+               	<input type="text" class="input_text" id="phrase"/>
+			</label>
+			<label>
+               	<span>Reversed!</span>
+               	<input type="text" class="input_text" id="result"/>
+            <label>
+				<input type="button" value="Reverse" onclick="$('#result').val(reverse($('#phrase').val()))">
+            </label>
+ 		</div>
+    </form>
+	
+</body>
+</html>

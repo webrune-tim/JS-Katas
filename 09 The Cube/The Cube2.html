@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8 />
+	<title></title>
+	<link rel="stylesheet" type="text/css" media="screen" href="master.css" />
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<!--[if IE]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<script type="text/javascript">
+		function isPrime(text){
+			var e = text.split(',');
+			for (var i=0; i<text.length; i++){
+				var num = 0;
+				for (pos = 0; pos < text[i].length; pos++) { 
+					num = num + parseInt(text[i].charAt (pos))
+				}
+				
+				console.info("Testing %i, the sum of digits %s.", num, text[i]);
+			
+				if (num == 1 || num == 2) {
+					console.info("%i, the sum of digits %s, is prime!.", num, text[i]);
+					return true;
+				}
+				for (var divisor = 3; divisor < num; divisor++) {
+					if (num % divisor == 0) {
+					console.info("%i, the sum of digits %s, is prime!.", num, text[i]);
+						return true;
+					}
+					else {
+						console.info(num + ", the sum of digits " + text[i] + ", is not prime.  It is divisible by " + divisor + ".");
+						break;
+					}
+				}
+			}
+			return false;
+		}
+		
+		function isTrap(text){
+			if(isPrime(text)){
+				trap.play();
+				return "It's a Trap!";
+			}
+		    return  "It's safe!";
+		}
+	</script>
+</head>
+<body>
+	<form>
+		<div class="box">
+			<h1>Add and Prime</h1>
+            <label>
+            	<span>Please enter first number</span>
+               	<input type="text" class="input_text" id="number1"/>
+			</label>
+			<label>
+               	<span>Tada</span>
+               	<input type="text" class="input_text" id="result1"/>
+            <label>
+				<input type="button" value="Calculate" onclick="$('#result1').val(isTrap($('#number1').val()))">
+            </label>
+ 		</div>
+ 				<audio id="trap" src="itsatrap.mp3">
+					Your browser does not support the audio element.
+				</audio>		<!--
+		<div class="box">
+			<h1>Add and Prime</h1>
+            <label>
+            	<span>Please enter second number</span>
+               	<input type="text" class="input_text" id="number2"/>
+			</label>
+			<label>
+               	<span>Tata</span>
+               	<input type="text" class="input_text" id="result2"/>
+            <label>
+				<input type="button" value="Calculate" onclick="$('#result2').val(isPrime($('#number2').val()))">
+            </label>
+ 		</div>
+ 		
+		<div class="box">
+			<h1>Add and Prime</h1>
+            <label>
+            	<span>Please enter first number</span>
+               	<input type="text" class="input_text" id="number3"/>
+			</label>
+			<label>
+               	<span>Tata</span>
+               	<input type="text" class="input_text" id="result3"/>
+            <label>
+				<input type="button" value="Calculate" onclick="$('#result3').val(isPrime($('#number3').val()))">
+            </label>
+ 		</div>-->
+    </form>
+</body>
+</html>

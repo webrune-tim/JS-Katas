@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8 />
+	<title></title>
+	<link rel="stylesheet" type="text/css" media="screen" href="master.css" />
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<!--[if IE]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<script type="text/javascript">
+		function deromanize( roman ) {
+		  var roman = roman.toUpperCase(),
+			  lookup = {I:1,V:5,X:10,L:50,C:100,D:500,M:1000},
+			  arabic = 0,
+			  i = roman.length;
+		  while (i--) {
+			if ( lookup[roman[i]] < lookup[roman[i+1]] )
+			  arabic -= lookup[roman[i]];
+			else
+			  arabic += lookup[roman[i]];
+		  }
+		  return arabic;
+		}
+	</script>
+</head>
+<body>
+
+<form>
+		<div class="box">
+			<h1>Enter a word or Phase</h1>
+            <label>
+            	<span>Please enter a Roman Numera</span>
+               	<input type="text" class="input_text" id="number"/>
+			</label>
+			<label>
+               	<span>Presto Chango!</span>
+               	<input type="text" class="input_text" id="result"/>
+            <label>
+				<input type="button" value="Calculate" onclick="$('#result').val(deromanize($('#number').val()))">
+            </label>
+ 		</div>
+    </form>
+	
+</body>
+</html>

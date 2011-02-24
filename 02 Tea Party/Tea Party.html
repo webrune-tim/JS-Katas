@@ -1,0 +1,18 @@
+<html>
+<body>
+<script type="text/javascript">
+	function welcome(lastName, isFemale, isSir){
+		if (isSir)
+			return "Hello Sir " + lastName + "<br>";
+		else if (isFemale)
+			return "Hello Ms. " + lastName + "<br>";
+		else
+			return "Hello Mr. " + lastName + "<br>";
+	}
+	
+	document.write(welcome("Austen", true, false));
+	document.write(welcome("Orwell", false, false));
+	document.write(welcome("Newton", false, true));
+</script>
+</body>
+</html>	

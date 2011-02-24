@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8 />
+	<title></title>
+	<link rel="stylesheet" type="text/css" media="screen" href="css/master.css" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	<!--[if IE]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<script type="text/javascript">
+		function sum(text) {
+			num = 0;
+			for (i = 0; i < text.length; i++) { 
+				num = num + parseInt(text.charAt (i)) 
+			}
+			return num;
+		} 
+		
+		//form.result.value=(sum(roman));
+		
+		function isPrime(num){
+			if (num == 1 || num == 2) {
+				document.write(num + " is prime!");
+			}
+			for (var i=2;i<num;i++) {
+				if (num % i == 0) {
+					var prime="yes"
+				}
+				document.write(num + " is not prime.  It is divisible by " + i + ".");
+				break;
+			}
+			if (num % i != 0){
+				var prime="no";
+			}
+			if (prime == "no"){
+				document.write(num + " is prime!");
+			}
+		}
+
+	</script>
+</head>
+<body>
+
+<center>
+<h2>Roman Numeral Convert</h2><p>
+Please enter a roman Numeral:<br>
+<input type="text" id="number" size="7">
+<input type="button" value="Calculate" onclick="$('#result').val(sum($('#number').val()))">
+<br/>
+<input type="text" id="result" size="45" value="">
+</center>
+	
+</body>
+</html>

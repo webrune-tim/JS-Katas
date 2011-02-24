@@ -1,0 +1,37 @@
+<html>
+<head>
+<style>
+	red{ color #F00; }
+</style>
+<script type="text/javascript">
+var runlimit = 12;
+
+var num1=0, num2=1, ans;
+function getNextFib(){
+	ans = (num1 + num2);
+	num1 = num2;
+	num2 = ans;
+	return ans;
+}
+
+function isPrime(num){
+	for(x = num-1; x > 1; x--){
+		if(ans % i == 0)
+		return false;
+	}
+	return true;
+}
+
+for(i = 0; i < runlimit; i++){
+	var x = getNextFib();
+	document.write(x + " is not prime.  It is divisible by " + i + ".");
+	if(isPrime(x))
+		document.write(" is prime!");
+	document.write("<br>");
+}
+</script>
+</head>
+
+<body>
+</body>
+</html>

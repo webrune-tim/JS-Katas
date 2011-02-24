@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>		
+			// Assign handlers immediately after making the request,
+			  // and remember the jqxhr object for this request
+			  var jqxhr = $.get("plugin.html", function() {
+				alert("success");
+			  })
+			  .success(function() { alert("second success"); })
+			  .error(function() { alert("error"); })
+			  .complete(function() { alert("complete"); });
+			
+			  // perform other work here ...
+			
+			  // Set another completion function for the request above
+			  jqxhr.complete(function(){ alert("second complete"); });
+		</script>
+	</head>
+	
+	<body>
+		<div class="result"></div>
+	</body>
+</html>
