@@ -1,0 +1,13 @@
+{
+  "name": "Whack-A-Mole",
+  "version": "1.0",
+  "description": "Basic Whack-A-Mole game",
+  "icons": {
+    "128" : "icon.png"
+  },
+  "app": {
+  	"launch": {
+  		"web_url": "http://dl.dropbox.com/u/5676893/Whack-A-Mole/Whack-A-Mole.html"
+	}
+  }
+}

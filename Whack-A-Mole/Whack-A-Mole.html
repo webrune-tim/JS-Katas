@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Whack-A-Mole</title>
+		<style>
+			body
+			{
+				background-color: #222;
+				font-family: sans-serif;
+				color: #fff;
+			}
+			h1 { margin: .5em; }
+			
+			#defaultCountdown
+			{
+				margin-top: -.5em;
+				padding-left:1.5em;
+				float:left;
+			}
+			
+			#defaultScore
+			{
+				margin-top: -.5em;
+				padding-left:1em;
+				float: left;
+			}
+			
+			.all
+			{
+				border: #fff solid 2px;
+				border-radius: 20px;
+				-moz-border-radius: 20px;
+				-webkit-border-radius: 20px;
+				width: 172px;
+				background-color: #ccc;
+			}
+			
+			.stats{
+				clear: both;
+				margin: .25em;
+				width: 250px;
+				height: 2em;
+				line-height: 2em;
+			}
+			
+			.container
+			{	
+				user-select: none;
+				-moz-user-select: none;
+				-khtml-user-select: none;
+				text-align: center;
+				margin: 0 auto;
+				padding: 1em;
+			}
+			
+			.button
+			{
+				padding: 10px 12px;
+				display: inline;
+				border: none;
+				color: #fff;
+				cursor: crosshair;
+				font-weight: bold;
+				border-radius: 20px;
+				-moz-border-radius: 20px;
+				-webkit-border-radius: 20px;
+				text-shadow: 1px 1px #666;
+			}
+			
+			.button:hover { background-position: 0 -48px; }
+			
+			.button:active
+			{
+				background-position: 0 top;
+				position: relative;
+				top: 1px;
+				padding: 6px 10px 4px;
+			}
+			
+			.button.red.active
+			{
+				background-color: #e50000;
+				border: #fff solid 2px;
+			}
+			
+			.button.purple.active
+			{
+				background-color: #9400bf;
+				border: #fff solid 2px;
+			}
+			
+			.button.green.active
+			{
+				background-color: #58aa00;
+				border: #fff solid 2px;
+			}
+			
+			.button.orange.active
+			{
+				background-color: #ff9c00;
+				border: #fff solid 2px;
+			}
+			
+			.button.blue.active
+			{
+				background-color: #2c6da0;
+				border: #fff solid 2px;
+			}
+			
+			.button.black.active
+			{
+				background-color: #333;
+				border: #fff solid 2px;
+			}
+			
+			.button
+			{
+				border: #FDD017 solid 2px;
+				background-color: #999999;
+			}
+
+		</style>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+		<script>
+			var whackAMole = {}; 
+			whackAMole.successfulHits = 0;
+			whackAMole.currentScore = 10000;
+			whackAMole.difficultyFactor = .25; // score to decriment per ms
+			whackAMole.loopSpeed = 200;
+			whackAMole.buttons;
+			whackAMole.highscore = 0;
+			
+			//storage
+			window.localStorage.setItem(whackAMole.highscore);
+			
+			//timer
+			whackAMole.gameLoop = function(){
+			   if (whackAMole.currentScore <= 0){
+			   		$('#defaultCountdown').text('Time is up');
+			 		$(".active").removeClass("active");
+			 		whackAMole.currentScore = 0;
+			 		whackAMole.currentScore = whackAMole.highscore;
+			   }
+			   else {
+					if($(".active").length == 0){
+						whackAMole.randomnumber=Math.floor(Math.random()*buttons.length);
+						$(buttons[whackAMole.randomnumber]).addClass('active');
+						if(newMole) {
+							newMole.play();
+						}
+					}
+					else{
+			 			whackAMole.currentScore = whackAMole.currentScore - (whackAMole.difficultyFactor * whackAMole.loopSpeed);
+			 		}
+			 		whackAMole.updateUI();
+			    	t=setTimeout(whackAMole.gameLoop,whackAMole.loopSpeed);
+			   }
+			 }
+			 
+			 whackAMole.updateUI = function() {
+			 	$('#defaultCountdown').text(whackAMole.currentScore);
+			 	$('#defaultCountdown').text(whackAMole.highScore);
+			 	$('#defaultScore').text(whackAMole.successfulHits);
+			 }
+			
+			 //Score
+			  $(function () {
+			 	  buttons = $(".container .button").toArray();
+			 	  //$('.container.').bind('selectstart', function(){return false;});
+			 	  
+			      $('.container	.button').click(function () {
+			 		if($(this).hasClass("active")){
+						$(this).removeClass('active');
+						whackAMole.successfulHits ++;
+						if(whack){
+							//whack.stop();
+							whack.play();
+						}
+					}
+					whackAMole.updateUI();
+			      });
+			  });
+			 
+			 var t = setTimeout(whackAMole.gameLoop,whackAMole.loopSpeed)
+		</script>
+	</head>
+	<body>
+		<center>
+		<h1>Whack-A-Mole</h1>
+		<div class="stats">
+			<div id="defaultCountdown">Time</div>
+			<div id="defaultCountdown">High Score</div>
+			<div id="defaultScore">Score</div>
+		</div>
+		<div class="all">
+			<div class="container">
+				<div class="button red">@</div>
+				<div class="button purple">@</div>
+				<div class="button green">@</div>
+			</div>
+			<div class="container">
+				<div class="button red">@</div>
+				<div class="button purple">@</div>
+				<div class="button green">@</div>
+			</div>
+			<div class="container">
+				<div class="button red">@</div>
+				<div class="button purple">@</div>
+				<div class="button green">@</div>
+			</div>
+		</div>
+		<!-- Sounds -->
+		<audio id="whack" preload="auto" src="sounds/whack.mp3">
+		</audio>
+		<audio id="newMole" src="sounds/new.mp3">
+		</audio>
+	</body>
+</html>
